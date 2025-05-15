@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Mith Tetya!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      text-align: center;
+      color: #333;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-top: 20px;
+      animation: pop 1s ease-in-out infinite alternate;
+    }
+    @keyframes pop {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    .photo {
+      margin-top: 20px;
+      animation: bounceIn 2s ease;
+    }
+    .photo img {
+      width: 250px;
+      border-radius: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      animation: pulse 2s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.03); }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .wish {
+      font-size: 1.5rem;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 600px;
+      animation: fadeIn 2s ease-in;
+    }
+    .cake {
+      font-size: 100px;
+      margin: 20px 0;
+      animation: wiggle 1s infinite;
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+    .gift {
+      font-size: 60px;
+      cursor: pointer;
+      margin: 20px;
+      transition: transform 0.3s ease;
+      animation: float 3s ease-in-out infinite;
+    }
+    .gift:hover {
+      transform: scale(1.2);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .gift-text {
+      font-size: 1rem;
+      margin-top: -10px;
+      cursor: pointer;
+      color: #555;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    .gift-text:hover {
+      color: #000;
+    }
+    .gift-box {
+      display: none;
+      font-size: 1.5rem;
+      background: #fff3cd;
+      padding: 20px;
+      margin: 10px auto;
+      border-radius: 10px;
+      width: fit-content;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      animation: pop-up 0.5s ease forwards;
+    }
+    @keyframes pop-up {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+  <h1>Happy Birthday Mith Tetya! 🎉</h1>
+
+  <div class="photo">
+    <img src="mith-tetya.jpg" />
+  </div>
+
+  <div class="wish">
+    <p>Happy birthday! 🎉 Wishing you a day filled with joy, laughter, and everything that makes you happy. 🎂</p>
+    <p>May this year bring you exciting new adventures and all the best things in life. Enjoy your special day! ✨</p>
+  </div>
+
+  <div class="cake">🎂</div>
+
+  <div class="gift" onclick="openGift()">🎁</div>
+  <div class="gift-text" onclick="openGift()">Click here to open your gift!</div>
+
+  <div class="gift-box" id="giftBox">
+    🎁 Surprise! You got a fancy Sunscreen to keep glowing all year long! ☀️🧴
+  </div>
+
+  <!-- Birthday Song Audio -->
+  <audio id="birthdaySong" autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mid" type="audio/midi">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Confetti animation
+    const confettiContainer = document.getElementById("confetti");
+
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.textContent = "🎊";
+      confetti.style.position = "absolute";
+      confetti.style.left = Math.random() * 100 + "%";
+      confetti.style.top = "-30px";
+      confetti.style.fontSize = "2rem";
+      confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+      confettiContainer.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 6000);
+    }
+
+    setInterval(createConfetti, 300);
+
+    // Gift function
+    function openGift() {
+      const giftBox = document.getElementById("giftBox");
+      giftBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
